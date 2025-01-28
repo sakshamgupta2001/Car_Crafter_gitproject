@@ -30,6 +30,7 @@ DEBUG = os.environ.get('DEBUG', 'FALSE').lower()=='true'
 
 
 ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS')
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -86,9 +87,10 @@ DATABASES = {
         'PORT': '5432',
 }
 }
+
 database_url = os.environ.get('DATABASE_URL')
 
-DATABASES['default']=dj_database_url.parse(database_url)
+DATABASES['default']=dj_database_url.parse('database_url')
 
 # postgresql://postgre_django_rander_user:I3WzbLJl3rrV05Iqsyvoqci2WRYMFCvg@dpg-cucck5rv2p9s73d5fe0g-a.oregon-postgres.render.com/postgre_django_rander
 

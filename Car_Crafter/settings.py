@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/5.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.1/ref/settings/
 """
-
+import dj_database_url
 from pathlib import Path
 import os
 
@@ -84,9 +84,10 @@ DATABASES = {
         'HOST': 'localhost',
         'PORT': '5432',
 }
-
 }
 
+DATABASES['default']=dj_database_url.parse('postgresql://postgre_django_rander_user:I3WzbLJl3rrV05Iqsyvoqci2WRYMFCvg@dpg-cucck5rv2p9s73d5fe0g-a.oregon-postgres.render.com/postgre_django_rander')
+# postgresql://postgre_django_rander_user:I3WzbLJl3rrV05Iqsyvoqci2WRYMFCvg@dpg-cucck5rv2p9s73d5fe0g-a.oregon-postgres.render.com/postgre_django_rander
 
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators

@@ -77,6 +77,7 @@ WSGI_APPLICATION = 'Car_Crafter.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
@@ -85,12 +86,16 @@ DATABASES = {
         'PASSWORD': '9174588607',
         'HOST': 'localhost',
         'PORT': '5432',
-}
+    }
 }
 
+# Get database URL from environment variables
 database_url = os.environ.get("DATABASE_URL")
 
-DATABASES['default']=dj_database_url.parse("database_url")
+# If DATABASE_URL exists, override the default settings
+if database_url:
+    DATABASES['default'] = dj_database_url.config(default=database_url, conn_max_age=600)
+
 
 # postgresql://postgre_django_rander_user:I3WzbLJl3rrV05Iqsyvoqci2WRYMFCvg@dpg-cucck5rv2p9s73d5fe0g-a.oregon-postgres.render.com/postgre_django_rander
 

@@ -21,14 +21,15 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-xq43(u-5z9^s816ezo=$cmks6!w&_8ud64d#ncs)b4st3-%+q8'
+SECRET_KEY = os.environ.get('SECRET_KEY')
+#'django-insecure-xq43(u-5z9^s816ezo=$cmks6!w&_8ud64d#ncs)b4st3-%+q8'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 
-DEBUG = False
+DEBUG = os.environ.get('DEBUG', 'FALSE').lower()=='true'
 
 
-ALLOWED_HOSTS = ["your_render_url.onrender.com"]
+ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS').split('')
 
 # Application definition
 
@@ -86,8 +87,10 @@ DATABASES = {
         'PORT': '5432',
 }
 }
+database_url = os.environ.get('DATABASE_URL')
 
-DATABASES['default']=dj_database_url.parse('postgresql://postgre_django_rander_user:I3WzbLJl3rrV05Iqsyvoqci2WRYMFCvg@dpg-cucck5rv2p9s73d5fe0g-a.oregon-postgres.render.com/postgre_django_rander')
+DATABASES['default']=dj_database_url.parse(database_url)
+
 # postgresql://postgre_django_rander_user:I3WzbLJl3rrV05Iqsyvoqci2WRYMFCvg@dpg-cucck5rv2p9s73d5fe0g-a.oregon-postgres.render.com/postgre_django_rander
 
 # Password validation

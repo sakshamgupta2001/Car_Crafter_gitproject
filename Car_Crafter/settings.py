@@ -26,13 +26,13 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 DEBUG = os.environ.get('DEBUG', 'FALSE').lower() == 'true'
 
 # Ensure ALLOWED_HOSTS is a list
-#ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS", "localhost").split(",")\
+ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS", "localhost").split(",")
 
-ALLOWED_HOSTS = [
-    "localhost",
-    "127.0.0.1",
-    "car-crafter-gitproject.onrender.com"
-]
+# ALLOWED_HOSTS = [
+#     "localhost",
+#     "127.0.0.1",
+#     "car-crafter-gitproject.onrender.com"
+# ]
 
 CSRF_TRUSTED_ORIGINS = [
     "https://car-crafter-gitproject.onrender.com"
